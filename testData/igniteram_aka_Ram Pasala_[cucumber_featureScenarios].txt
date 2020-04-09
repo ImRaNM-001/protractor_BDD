@@ -1,0 +1,31 @@
+1.
+Feature: To search cucumber in google
+
+@CucumberScenario
+Scenario: Cucumber Google Search
+Given I am on "google" search page
+When I type "cucumber"
+When I click on search button
+Then I clear the search text
+
+2.
+Feature: To search protractor in google
+
+@ProtractorScenario
+Scenario: Protractor Google Search
+Given I am on "cucumber" search page
+When I type "protractor"
+When I click on search button
+Then I clear the search text
+
+3.
+Feature: To search typescript in google
+
+@TypeScriptScenario
+Scenario: Typescript Google Search
+Given I am on "protractor" search page
+When I type "typescript"
+When I click on search button
+Then I clear the search text
+Then I click on google logo
+

@@ -1,0 +1,25 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "to_learn_cucumber_with_typescript",
+  "main": "index.js",
+  "dependencies": {
+    "protractor": "^5.4.3",
+    "jasmine": "3.5.0",
+    "chai": "^4.2.0",
+    "chromedriver": "^77.0.0",
+    "fs-extra": "^8.1.0",
+    "jasmine-reporters": "^2.3.2",
+    "properties-reader": "^0.3.1",
+    "protractor-html-reporter-2": "^1.0.4"
+  },
+  "devDependencies": {
+    "cucumber": "^6.0.5",
+    "protractor-cucumber-framework": "^6.2.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Imran",
+  "license": "ISC"
+}
