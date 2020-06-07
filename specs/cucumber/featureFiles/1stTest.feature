@@ -7,7 +7,7 @@ When Hit the gmail urlLink
 Then Verify the page title of gmail loginPage
 
 # 2nd scenario
-Scenario: Caluclate sum of a given array
+Scenario: Calculate sum of a given array
 Then Verify sum of all elements of the array 
 
 
