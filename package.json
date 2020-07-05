@@ -1,25 +1,49 @@
 {
-  "name": "test",
-  "version": "1.0.0",
+  "name": "protractor-bdd",
+  "version": "4.0.0",
+  "license": "MIT",
   "description": "to_learn_cucumber_with_typescript",
+  "homepage": "https://github.com/ImRaNM-001/protractor_BDD",
+  "keywords": [
+    "protractor",
+    "cucumber",
+    "typescript",
+    "angular",
+    "angularjs",
+    "testing",
+    "behaviour driven development",
+    "bdd",
+    "selenium",
+    "webdriverJS",
+    "gherkin",
+    "automation testing"
+  ],
   "main": "index.js",
-  "dependencies": {
-    "protractor": "^5.4.3",
-    "jasmine": "3.5.0",
-    "chai": "^4.2.0",
-    "chromedriver": "^77.0.0",
-    "fs-extra": "^8.1.0",
-    "jasmine-reporters": "^2.3.2",
-    "properties-reader": "^0.3.1",
-    "protractor-html-reporter-2": "^1.0.4"
-  },
-  "devDependencies": {
-    "cucumber": "^6.0.5",
-    "protractor-cucumber-framework": "^6.2.1"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "clean": "rimraf JS/",
+    "clean-build": "npm run clean && npm run build",
+    "init-contributors": "all-contributors init",
+    "add-contributors": "all-contributors add",
+    "generate-contributors": "all-contributors generate",
+    "test": "protractor JS/cucumberConfig.js"
   },
   "author": "Imran",
-  "license": "ISC"
+  "devDependencies": {
+    "@types/cucumber": "^6.0.1",
+    "@types/node": "^12.12.6",
+    "@types/selenium-webdriver": "^4.0.8",
+    "all-contributors-cli": "^6.15.0",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "cucumber": "^6.0.5",
+    "cucumber-html-reporter": "^5.2.0",
+    "mkdirp": "^1.0.4",
+    "protractor": "^5.4.3",
+    "protractor-cucumber-framework": "^6.2.1",
+    "rimraf": "^2.0.3",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.9.5"
+  },
+  "repository": "https://github.com/ImRaNM-001/protractor_BDD"
 }

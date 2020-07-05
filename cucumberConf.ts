@@ -1,43 +1,59 @@
 /*
 Basic configuration to run your cucumber
-feature files and step definitions with protractor.
-**/
+feature files and step definitions with protractor      */
 
-// import {browser, Config} from "protractor";
-// import * as path from "path";
+import * as path from 'path';
+import {browser, Config} from 'protractor';     // or, import {browser, Config} from './node_modules/protractor';
+import {Reporter} from './utils/reporterConf';
 
-export const config: Config = {
+const jsonReports = process.cwd() + '/reports';
+
+export const config : Config = {
     // seleniumAddress: 'http://localhost:4444/wd/hub',
-    directConnect: true,
-    getPageTimeout: 50000,
-    allScriptsTimeout: 50000,
+  directConnect: true,
+  getPageTimeout: 50000,
+  allScriptsTimeout: 50000,
   
-    params: {
+  params: {
     baseUrl: 'https://www.google.com/ncr'
-    }
+  }
 
-    capabilities: {
-        browserName:'chrome'
-    },
+  capabilities: {
+    browserName:'chrome'
+  },
   
-    framework: 'custom',  // set to "custom" instead of cucumber.  
-    frameworkPath: require.resolve('protractor-cucumber-framework'),  // path relative to the current config file
+  framework: 'custom',     // set to "custom" instead of cucumber.  
+  frameworkPath: require.resolve('protractor-cucumber-framework'),  // path relative to the current config file
   
-    specs: ['./specs/cucumber/featureFiles/*.feature'],     // specs here are the cucumber feature files    
+  specs: ['./specs/featureFiles/*.feature'],        // specs here are the cucumber feature files    
   
     // cucumber command line options
-    cucumberOpts: {
-      require: ['./specs/cucumber/stepDefinition.ts'],  // require step definition files before executing features
-      tags: false,
-    // tags: [],                      // <string[]> (expression) only execute the features or scenarios with tags matching the expression
-      strict: true,                  // <boolean> fail if there are any undefined or pending steps
-      format: ["pretty"],            // <string[]> (type[:path]) specify the output format, optionally supply PATH to redirect formatter output (repeatable)
-      'dry-run': false,              // <boolean> invoke formatters without executing steps
-      compiler: []                   // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
-    },
+  cucumberOpts: {
+    compiler: "ts:ts-node/register",
+    format: "json:./reports/cucumber_report.json",
+    require: ['./JS/specs/stepDefFiles/*.js',     './JS/utils/reporterConf.js'],     // require step definition files before executing features
+
+    strict: true,           // it will check if any step is not defined in step definition file, if not will fail execution
+    tags: []              // what tags in the feature file to be executed
+
+    /* tags: "@CucumberScenario or @ProtractorScenario or @TypeScriptScenario or @OutlineScenario",                      // <string[]> (expression) only execute the features or scenarios with tags matching the expression
+    
+    compiler: []                   // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)  
+    
+    format: ["pretty"],            // <string[]> (type[:path]) specify the output format, optionally supply PATH to redirect formatter output (repeatable)           */
+    
+    // 'dry-run': false,              // to check if the mapping is proper between feature file and step def file (in other words check if all steps have step definition)
+
+
+  },
   
-   onPrepare: () => {
-      browser.manage().window().maximize(); // maximize the browser before executing the feature files
+  onPrepare: () =>{
+      browser.manage().window().maximize();     // maximize the browser before executing the feature files
       browser.ignoreSynchronization = true;  
-    }
+  },
+
+  onComplete: () =>{
+        Reporter.createHTMLReport();
+  },
+
 };

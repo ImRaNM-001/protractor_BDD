@@ -2,8 +2,9 @@ Feature: Write test case with cucumber and protractor using typescript.
 
 # 1st scenario
 Scenario: Launch browser, hit gmail url and verify page title
-Given Open the google homePage
-When Hit the gmail urlLink
+Given Browser is opened
+And User navigates to the google homePage
+When User hit the gmail urlLink
 Then Verify the page title of gmail loginPage
 
 # 2nd scenario
