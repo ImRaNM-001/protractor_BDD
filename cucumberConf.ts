@@ -33,8 +33,8 @@ export const config : Config = {
     format: "json:./reports/cucumber_report.json",
     require: ['./JS/specs/stepDefFiles/*.js',     './JS/utils/reporterConf.js'],     // require step definition files before executing features
 
-    strict: true,           // it will check if any step is not defined in step definition file, if not will fail execution
-    tags: []              // what tags in the feature file to be executed
+    strict: true,           // it will check if any step is not defined/undefined/pending/not written in step definition file, it will execute but fail the feature step and display code snippet at console
+    tags: []              // tags are written in the feature file and if written those tags will be executed
 
     /* tags: "@CucumberScenario or @ProtractorScenario or @TypeScriptScenario or @OutlineScenario",                      // <string[]> (expression) only execute the features or scenarios with tags matching the expression
     
@@ -42,7 +42,7 @@ export const config : Config = {
     
     format: ["pretty"],            // <string[]> (type[:path]) specify the output format, optionally supply PATH to redirect formatter output (repeatable)           */
     
-    // 'dry-run': false,              // to check if the mapping is proper between feature file and step def file (in other words check if all steps have step definition)
+    // 'dry-run': false,              // to check if the mapping is proper between feature file and step def file (in other words check if any feature file steps like "Given", "When", "Then" have corrsponding step definition fns(), will not give error in report but won't display fn() name in console post test run)
 
 
   },
